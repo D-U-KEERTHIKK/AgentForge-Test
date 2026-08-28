@@ -27,8 +27,10 @@ public with sharing class EmployeeOffboardingWizardController {
                 ? 'Resignation_In_Progress'
                 : 'Termination_In_Progress';
             update u;
-        } catch (Exception e) {
-            throw new AuraHandledException('Offboarding failed: ' + e.getMessage());
+        } catch (QueryException e) {
+            throw new AuraHandledException('User not found:' + e.getMessage());
+        } catch (DmlException e) {
+            throw new AuraHandledException('Offboarding update failed:' + e.getMessage());
         }
     }
 }
