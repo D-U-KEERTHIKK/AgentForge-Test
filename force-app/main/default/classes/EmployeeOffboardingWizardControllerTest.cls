@@ -28,11 +28,11 @@ private class EmployeeOffboardingWizardControllerTest {
         req.userId = u.Id;
         req.offboardingType = 'Resignation';
 
-        Test.startTest();
+
         EmployeeOffboardingWizardController.processOffboarding(
             new List<EmployeeOffboardingWizardController.Request>{ req }
         );
-        Test.stopTest();
+
 
         User updated = [SELECT IsActive, Offboarding_Status__c FROM User WHERE Id = :u.Id];
         Assert.areEqual(false, updated.IsActive, 'User should be deactivated');
@@ -47,11 +47,11 @@ private class EmployeeOffboardingWizardControllerTest {
         req.userId = u.Id;
         req.offboardingType = 'Termination';
 
-        Test.startTest();
+
         EmployeeOffboardingWizardController.processOffboarding(
             new List<EmployeeOffboardingWizardController.Request>{ req }
         );
-        Test.stopTest();
+
 
         User updated = [SELECT IsActive, Offboarding_Status__c FROM User WHERE Id = :u.Id];
         Assert.areEqual(false, updated.IsActive, 'User should be deactivated');
@@ -60,19 +60,19 @@ private class EmployeeOffboardingWizardControllerTest {
 
     @IsTest
     static void testEmptyRequestList() {
-        Test.startTest();
+
         EmployeeOffboardingWizardController.processOffboarding(
             new List<EmployeeOffboardingWizardController.Request>()
         );
-        Test.stopTest();
+
         Assert.isTrue(true, 'Empty request list should not throw an exception');
     }
 
     @IsTest
     static void testNullRequestList() {
-        Test.startTest();
+
         EmployeeOffboardingWizardController.processOffboarding(null);
-        Test.stopTest();
+
         Assert.isTrue(true, 'Null request list should not throw an exception');
     }
 }
