@@ -13,6 +13,5 @@
     </nameField>
     <pluralLabel>Equipment Requests</pluralLabel>
     <sharingModel>ReadWrite</sharingModel>
-    <trackHistory>false</trackHistory>
     <visibility>Public</visibility>
 </CustomObject>
