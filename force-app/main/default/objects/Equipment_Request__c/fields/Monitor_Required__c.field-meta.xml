@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Monitor_Required__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether a monitor is required for this equipment request</description>
+    <label>Monitor Required</label>
+    <type>Checkbox</type>
+</CustomField>
