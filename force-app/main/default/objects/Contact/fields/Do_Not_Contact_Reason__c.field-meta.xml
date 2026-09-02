@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Do_Not_Contact_Reason__c</fullName>
+    <description>Reason why contact should not be contacted</description>
+    <inlineHelpText>Enter the reason this contact should not be contacted</inlineHelpText>
+    <label>Do Not Contact Reason</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+</CustomField>
