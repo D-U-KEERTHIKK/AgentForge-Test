@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <description>Validation rule: if Preferred_Contact_Method__c = 'SMS', then standard MobilePhone field must be populated.</description>
+    <errorConditionFormula>AND(ISPICKVAL(Preferred_Contact_Method__c, 'SMS'), ISBLANK(MobilePhone))</errorConditionFormula>
+    <errorMessage>Mobile phone is required when SMS is selected as the preferred contact method.</errorMessage>
+    <errorDisplayField>MobilePhone</errorDisplayField>
+</ValidationRule>
