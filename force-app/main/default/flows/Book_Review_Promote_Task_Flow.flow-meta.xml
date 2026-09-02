@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>Record-Triggered Automation Flow on Book_Review__c that creates a Task when Rating >= 4 AND Review_Status = Published</description>
+    <decisions>
+        <name>Check_Promotion_Criteria</name>
+        <label>Check Promotion Criteria</label>
+        <locationX>176</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>No Action Needed</defaultConnectorLabel>
+        <rules>
+            <name>Criteria_Met</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Rating__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>4</rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Review_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>Published</rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Promotion_Task</targetReference>
+            </connector>
+            <label>Rating >= 4 AND Status = Published</label>
+        </rules>
+    </decisions>
+    <interactionType>Cloud</interactionType>
+    <label>Book_Review_Promote_Task_Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LowCodeCloud</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LowCodeCloud</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Promotion_Task</name>
+        <label>Create Promotion Task</label>
+        <locationX>176</locationX>
+        <locationY>396</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Promote Book Review</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <stringValue>Please promote this highly-rated book review. The book "{!$Record.Book_Title__c}" by {!$Record.Author_Name__c} has received a rating of {!$Record.Rating__c}/5 and has been published. Consider sharing this review on your preferred channels.</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Promotion_Criteria</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <triggerType>RecordAfterSave</triggerType>
+    <triggerOnCreateOnly>false</triggerOnCreateOnly>
+    <triggerRecordType>Book_Review__c</triggerRecordType>
+</Flow>
