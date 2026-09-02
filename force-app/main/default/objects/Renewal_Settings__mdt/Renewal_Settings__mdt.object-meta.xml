@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" format="inlineEditablePlatformEngineObject">
+    <description>Custom metadata type for managing renewal settings including reminder windows and escalation thresholds.</description>
+    <label>Renewal Settings</label>
+    <pluralLabel>Renewal Settings</pluralLabel>
+    <visibility>Public</visibility>
+    <fields>
+        <fullName>Reminder_Window_Days__c</fullName>
+        <defaultValue>30</defaultValue>
+        <description>Number of days before renewal date to send reminders.</description>
+        <label>Reminder Window Days</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+    </fields>
+    <fields>
+        <fullName>Escalation_Threshold_Days__c</fullName>
+        <defaultValue>7</defaultValue>
+        <description>Number of days past renewal date before escalation is triggered.</description>
+        <label>Escalation Threshold Days</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+    </fields>
+</CustomMetadata>

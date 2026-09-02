@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>First_Reminder_Date__c</fullName>
+    <label>First Reminder Date</label>
+    <type>Date</type>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <description>Stores the date of the first reminder for the opportunity</description>
+</CustomField>

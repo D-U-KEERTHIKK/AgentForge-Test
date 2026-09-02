@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" format="1.0">
+    <label>Default</label>
+    <protected>false</protected>
+    <records>
+        <fullName>Default</fullName>
+        <fields>
+            <name>Reminder_Window_Days__c</name>
+            <value xsi:type="xsd:double" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">30</value>
+        </fields>
+        <fields>
+            <name>Escalation_Threshold_Days__c</name>
+            <value xsi:type="xsd:double" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">7</value>
+        </fields>
+    </records>
+</CustomMetadata>
