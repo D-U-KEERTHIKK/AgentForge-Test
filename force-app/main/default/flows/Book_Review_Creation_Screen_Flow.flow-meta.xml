@@ -36,7 +36,7 @@
         <fields>
             <name>Book_Title_Input</name>
             <fieldType>InputField</fieldType>
-            <inputType>Text</inputType>
+            <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
             <label>Book Title</label>
             <locationX>0</locationX>
