@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <description>Creates a follow-up Task when a high-priority Case is created. Calculates the next business day for ActivityDate, skipping weekends.</description>
+    <interviewLabel>Case - High Priority Follow Up Task {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Create Follow Up Task on High Priority</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordTriggerType>Create</recordTriggerType>
+    <status>Draft</status>
+    <triggerType>RecordAfterSave</triggerType>
+
+    <formulas>
+        <name>DayOfWeekNumber</name>
+        <dataType>Number</dataType>
+        <expression>MOD(VALUE(TEXT(TODAY() - DATE(1900, 1, 7))), 7) + 1</expression>
+        <scale>0</scale>
+    </formulas>
+
+    <formulas>
+        <name>DaysToAdd</name>
+        <dataType>Number</dataType>
+        <expression>IF({!DayOfWeekNumber} = 6, 3, IF({!DayOfWeekNumber} = 7, 2, 1))</expression>
+        <scale>0</scale>
+    </formulas>
+
+    <formulas>
+        <name>ActivityDateFormula</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() + {!DaysToAdd}</expression>
+    </formulas>
+
+    <start>
+        <locationX>176</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_FollowUp_Task</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Priority</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+
+    <recordCreates>
+        <name>Create_FollowUp_Task</name>
+        <label>Create Follow Up Task</label>
+        <locationX>176</locationX>
+        <locationY>120</locationY>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Follow up on high-priority case</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>ActivityDateFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Not Started</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+
+</Flow>
