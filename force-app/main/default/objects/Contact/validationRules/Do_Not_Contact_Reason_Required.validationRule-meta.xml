@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <description>Validates that Do_Not_Contact_Reason__c is populated when Preferred_Contact_Method__c is set to 'Do Not Contact'</description>
+    <errorConditionFormula>AND(ISPICKVAL(Preferred_Contact_Method__c, 'Do Not Contact'), ISBLANK(Do_Not_Contact_Reason__c))</errorConditionFormula>
+    <errorMessage>Do Not Contact Reason is required when Preferred Contact Method is 'Do Not Contact'</errorMessage>
+    <errorDisplayField>Do_Not_Contact_Reason__c</errorDisplayField>
+</ValidationRule>
