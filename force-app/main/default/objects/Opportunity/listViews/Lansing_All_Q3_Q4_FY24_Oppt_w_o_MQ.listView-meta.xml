@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lansing_All_Q3_Q4_FY24_Oppt_w_o_MQ</fullName>
+    <columns>OPPORTUNITY.LEAD_SOURCE</columns>
+    <columns>Opportunity_Source__c</columns>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>OPPORTUNITY.AMOUNT</columns>
+    <columns>OPPORTUNITY.CLOSE_DATE</columns>
+    <columns>Next_Step_Due_Date__c</columns>
+    <columns>OPPORTUNITY.NEXT_STEP</columns>
+    <columns>CORE.USERS.FULL_NAME</columns>
+    <columns>OPPORTUNITY.CREATED_DATE</columns>
+    <columns>OPPORTUNITY.LAST_ACTIVITY</columns>
+    <columns>Sales_Forecast__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Closed Won,Closed Lost,Suspect,Qualifying,Contract Review,Signed,Ramping,Dead - not a fit,Dead - revisit,Market Qualification,Meeting Scheduled,Sales Rejected</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.CLOSE_DATE</field>
+        <operation>lessThan</operation>
+        <value>2/1/2024</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.CLOSE_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>8/1/2023</value>
+    </filters>
+    <label>Lansing All Q3/Q4/FY24 Oppt w/o MQ</label>
+</ListView>
