@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_Case_s__c</fullName>
+    <label>Use Case(s)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>sdlc</fullName>
+                <default>false</default>
+                <label>sdlc</label>
+            </value>
+            <value>
+                <fullName>salesforce</fullName>
+                <default>false</default>
+                <label>salesforce</label>
+            </value>
+            <value>
+                <fullName>insights</fullName>
+                <default>false</default>
+                <label>insights</label>
+            </value>
+            <value>
+                <fullName>git custodian</fullName>
+                <default>false</default>
+                <label>git custodian</label>
+            </value>
+            <value>
+                <fullName>IaC</fullName>
+                <default>false</default>
+                <label>IaC</label>
+            </value>
+            <value>
+                <fullName>SaaS (non-salesforce)</fullName>
+                <default>false</default>
+                <label>SaaS (non-salesforce)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>
